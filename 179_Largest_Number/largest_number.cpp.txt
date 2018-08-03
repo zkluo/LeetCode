@@ -1,0 +1,20 @@
+/*
+ * Date: 2018.8.3
+ * Author: Zhikun Luo
+ * Description: given a list of non negative integers, arrange them such that they form the largest number
+ * Hint: using compare function in sort function
+ */
+
+class Solution {
+public:
+    string largestNumber(vector<int>& nums) {
+        vector<string> str_nums(nums.size());
+        for (int i=0; i<nums.size(); i++) 
+            str_nums[i] = to_string(nums[i]);
+        sort(begin(str_nums), end(str_nums), [](string &s1, string &s2){ return s1+s2>s2+s1; });
+        string res = "";
+        for (int i=0; i<str_nums.size(); i++) 
+            res += str_nums[i];
+        return res;
+    }
+};
